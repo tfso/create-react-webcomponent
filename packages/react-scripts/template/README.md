@@ -5,6 +5,8 @@ This version of create-react-app it setup for creating web components.
 
 See public/index.html for polyfills you'll need.
 
+Installation: create-react-app --scripts-version=@tfso/react-scripts-webcomponent
+
 Changes:
 - Build is modified to produce a single javascript file with everything included (styles, runtime, etc). Source maps are not included.
 - During css preprocessing, all styles are prepended with the :host tag.
