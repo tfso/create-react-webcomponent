@@ -19,7 +19,7 @@
     "yarn.lock.cached"
   ],
   "bin": {
-    "create-react-webcomponent": "./index.js"
+    "create-react-app": "./index.js"
   },
   "dependencies": {
     "chalk": "1.1.3",
