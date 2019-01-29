@@ -22,6 +22,8 @@ function writeJson(fileName, object) {
 }
 
 function verifyNoTypeScript() {
+  return true; // TFSO-MODIFIED: We don't want typescript
+
   const typescriptFiles = globby(['**/*.(ts|tsx)', '!**/node_modules'], { cwd: paths.appSrc });
   if (typescriptFiles.length > 0) {
     console.warn(
