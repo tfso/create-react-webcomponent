@@ -164,7 +164,7 @@ module.exports = function(
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args.push('react', 'react-dom');
+  args.push('react', 'react-dom', 'styled-components@4.1.1', 'react-app-polyfill@0.1.3', 'react-web-component-style-loader@0.1.4-alpha');
 
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
