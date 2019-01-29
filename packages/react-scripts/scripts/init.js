@@ -170,7 +170,7 @@ module.exports = function(
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args.push('react', 'react-dom', 'styled-components@4.1.1', 'react-app-polyfill@0.1.3', 'react-web-component-style-loader@0.1.4-alpha'); // TFSO-MODIFIED: Add some packages
+  args.push('react', 'react-dom');
 
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
@@ -200,6 +200,8 @@ module.exports = function(
       return;
     }
   }
+
+  installCustomPackages(useYarn, verbose); // TFSO-MODIFIED: Install custom packages
 
   if (useTypeScript) {
     verifyTypeScriptSetup();
@@ -263,6 +265,29 @@ module.exports = function(
   console.log();
   console.log('Happy hacking!');
 };
+
+// TFSO-MODIFIED: Add some packages
+function installCustomPackages(useYarn, verbose){
+  let command;
+  let args;
+
+  if (useYarn) {
+    command = 'yarnpkg';
+    args = ['add'];
+  } else {
+    command = 'npm';
+    args = ['install', '--save', verbose && '--verbose'].filter(e => e);
+  }
+  args.push('styled-components@4.1.1', 'react-app-polyfill@0.1.3', 'react-web-component-style-loader@0.1.4-alpha');
+
+  console.log(`Installing custom packages...`);
+  console.log();
+
+  const proc = spawn.sync(command, args, { stdio: 'inherit' });
+  if (proc.status !== 0) {
+    console.error(`\`${command} ${args.join(' ')}\` failed`);
+  }
+}
 
 function isReactInstalled(appPackage) {
   const dependencies = appPackage.dependencies || {};
