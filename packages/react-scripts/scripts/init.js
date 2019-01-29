@@ -107,7 +107,13 @@ module.exports = function(
   };
 
   // Setup the browsers list
-  appPackage.browserslist = defaultBrowsers;
+  // TFSO-MODIFIED: Add custom browser list
+  appPackage.browserslist = [
+    '>0.2%',
+    'not dead',
+    'not ie < 11',
+    'not op_mini all',
+  ];
 
   fs.writeFileSync(
     path.join(appPath, 'package.json'),
@@ -164,7 +170,7 @@ module.exports = function(
     command = 'npm';
     args = ['install', '--save', verbose && '--verbose'].filter(e => e);
   }
-  args.push('react', 'react-dom', 'styled-components@4.1.1', 'react-app-polyfill@0.1.3', 'react-web-component-style-loader@0.1.4-alpha');
+  args.push('react', 'react-dom', 'styled-components@4.1.1', 'react-app-polyfill@0.1.3', 'react-web-component-style-loader@0.1.4-alpha'); // TFSO-MODIFIED: Add some packages
 
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(
