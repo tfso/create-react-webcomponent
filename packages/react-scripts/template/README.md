@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# TFSO-MODIFIED: Web component
+This version of create-react-app it setup for creating web components.
+
+See public/index.html for polyfills you'll need.
+
+Changes:
+- Build is modified to produce a single javascript file with everything included (styles, runtime, etc). Source maps are not included.
+- During css preprocessing, all styles are prepended with the :host tag.
+- During runtime, the styles are loaded, and all :host tags are replaced by the name of the web component. The styles are then mounted in style tags inside the web component.
+- We only use custom elements, not shadow dom. This is because shadow dom polyfills are pretty bad. 
+  Also, many react component packages rely on getting events from specific dom elements, which doesn't work when shadow dom retargets events to look like they come from the web component instead.
+- IE11 polyfills included by default
+- Styled components included by default
+
 ## Available Scripts
 
 In the project directory, you can run:

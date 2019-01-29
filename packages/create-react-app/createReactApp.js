@@ -370,7 +370,15 @@ function run(
   useTypescript
 ) {
   const packageToInstall = getInstallPackage(version, originalDirectory);
-  const allDependencies = ['react', 'react-dom', packageToInstall];
+  // TFSO-MODIFIED: Add dependencies needed for webcomponent build
+  const allDependencies = [
+    'react',
+    'react-dom',
+    'styled-components',
+    'react-app-polyfill',
+    'react-web-component-style-loader',
+    packageToInstall
+  ];
   if (useTypescript) {
     // TODO: get user's node version instead of installing latest
     allDependencies.push(
