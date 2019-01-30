@@ -1,6 +1,6 @@
 {
   "name": "@tfso/react-scripts-webcomponent",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Configuration and scripts for Create React App.",
   "repository": "tfso/create-react-app",
   "license": "MIT",
